@@ -1,6 +1,13 @@
 class Deck{
-    Card[] deck = new Card[60];
+    Card[] deck;
     
+    //Default deck.
     Deck(){
+        deck = new Card[54];
+        addDefaultCards();
+    }
+    
+    void addDefaultCards(){
+        
     }
 }
