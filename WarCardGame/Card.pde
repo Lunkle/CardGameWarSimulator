@@ -3,11 +3,6 @@ final String HEARTS = "HEARTS";
 final String CLUBS = "CLUBS";
 final String DIAMONDS = "DIAMONDS";
 
-PImage spriteSpades = loadImage("Suites/SuiteSpade.png");
-PImage spriteHearts = loadImage("Suites/SuiteHeart.png");
-PImage spriteClubs = loadImage("Suites/SuiteClub.png");
-PImage spriteDiamonds = loadImage("Suites/SuiteDiamond.png");
-
 final int CARD_WIDTH = 20;
 final int CARD_HEIGHT = 40;
 final int TEXT_SIZE = 20;
@@ -22,18 +17,20 @@ class Card {
     int cardNumber;
     int textSize = TEXT_SIZE;
     boolean isFaceDown = true;
+    PImage spriteSuite;
+    
     Deck deckFrom;
         
-    Card(String suite, int number, Deck deck){
+    Card(String suite, int number){ //Removed deck as cards can be made within main deck
         this.suite = suite;
         this.number = number;
-        deckFrom = deck;
+        //deckFrom = deck;
         if(number == 1){
             value = "A";
         }else if(number == 11){
             value = "J";
         }else if(number == 12){
-            value = "J";
+            value = "Q";
         }else if(number == 13){
             value = "K";
         }else if(number == 14){
@@ -42,23 +39,26 @@ class Card {
         }else{
             value = str(number); 
         }
+        switch(suite){
+            case SPADES:
+                spriteSuite = loadImage("Suites/SuiteSpade.png");
+                break;
+            case HEARTS:
+                spriteSuite = loadImage("Suites/SuiteHeart.png");
+                break;
+            case CLUBS:
+                spriteSuite = loadImage("Suites/SuiteClub.png");
+                break;
+            case DIAMONDS:
+                spriteSuite = loadImage("Suites/SuiteDiamond.png");
+                break;
+        }
+        
+        
     }
     
     void drawSuite(){
-        switch(suite){
-            case SPADES:
-                image(spriteSpades, position.x, position.y);
-                break;
-            case HEARTS:
-                image(spriteHearts, position.x, position.y);
-                break;
-            case CLUBS:
-                image(spriteClubs, position.x, position.y);
-                break;
-            case DIAMONDS:
-                image(spriteDiamonds, position.x, position.y);
-                break;
-        }
+        image(spriteSuite, position.x, position.y);
     }
     
     void displayCard(){
