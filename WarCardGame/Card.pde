@@ -3,17 +3,16 @@ final String HEARTS = "HEARTS";
 final String CLUBS = "CLUBS";
 final String DIAMONDS = "DIAMONDS";
 
-PImage spriteSpades = loadImage("Suites\SuiteSpade.png");
-PImage spriteHearts = loadImage("Suites\SuiteHeart.png");
-PImage spriteClubs = loadImage("Suites\SuiteClub.png");
-PImage spriteDiamonds = loadImage("Suites\SuiteDiamond.png");
+PImage spriteSpades = loadImage("Suites/SuiteSpade.png");
+PImage spriteHearts = loadImage("Suites/SuiteHeart.png");
+PImage spriteClubs = loadImage("Suites/SuiteClub.png");
+PImage spriteDiamonds = loadImage("Suites/SuiteDiamond.png");
 
 final int CARD_WIDTH = 20;
 final int CARD_HEIGHT = 40;
 final int TEXT_SIZE = 20;
 final int JOKER_TEXT_SIZE = 10;
 final int CORNER_RADIUS = 5;
-
 
 class Card {
     String suite;
@@ -46,7 +45,20 @@ class Card {
     }
     
     void drawSuite(){
-        
+        switch(suite){
+            case SPADES:
+                image(spriteSpades, position.x, position.y);
+                break;
+            case HEARTS:
+                image(spriteHearts, position.x, position.y);
+                break;
+            case CLUBS:
+                image(spriteClubs, position.x, position.y);
+                break;
+            case DIAMONDS:
+                image(spriteDiamonds, position.x, position.y);
+                break;
+        }
     }
     
     void displayCard(){
