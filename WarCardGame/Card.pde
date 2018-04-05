@@ -40,6 +40,6 @@ class Card {
         rect(position.x, position.y, CARD_WIDTH, CARD_HEIGHT, CORNER_RADIUS);
         textAlign(CENTER);
         textSize(textSize);
-        text(value, position.x, position.y);
+        text(value, position.x + CARD_WIDTH/2, position.y + CARD_HEIGHT/2 + textSize);
     }
 }
