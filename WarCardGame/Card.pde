@@ -12,6 +12,7 @@ final int CORNER_RADIUS = 5;
 class Card {
     String suite;
     String value;
+    int number;
     PVector position;
     int cardNumber;
     int textSize = TEXT_SIZE;
@@ -19,6 +20,7 @@ class Card {
     
     Card(String suite, int number){
         this.suite = suite;
+        this.number = number;
         if(number == 1){
             value = "A";
         }else if(number == 11){
