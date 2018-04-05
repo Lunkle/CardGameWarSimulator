@@ -17,10 +17,12 @@ class Card {
     int cardNumber;
     int textSize = TEXT_SIZE;
     boolean isFaceDown = true;
-    
-    Card(String suite, int number){
+    Deck deckFrom;
+        
+    Card(String suite, int number, Deck deck){
         this.suite = suite;
         this.number = number;
+        deckFrom = deck;
         if(number == 1){
             value = "A";
         }else if(number == 11){
