@@ -7,7 +7,6 @@ Deck deck1;
 Deck deck2;
 
 void setup() {
-<<<<<<< Updated upstream
     spadesSprite = loadImage("Suites/SuiteSpade.png");
     heartsSprite = loadImage("Suites/SuiteHeart.png");
     clubsSprite = loadImage("Suites/SuiteClub.png");
@@ -17,12 +16,7 @@ void setup() {
     deck2 = new Deck(200, 200);
     deck1.shuffleDeck();
     deck2.shuffleDeck();
-=======
-    size(800, 800);
-    d = new Deck();
-    d.addDefaultCards();
-    d.shuffleDeck();
->>>>>>> Stashed changes
+
 }
 
 void draw() {
