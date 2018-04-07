@@ -2,6 +2,7 @@ PImage spadesSprite;
 PImage heartsSprite;
 PImage clubsSprite;
 PImage diamondsSprite;
+PImage cardBackSprite;
 
 Deck deck1;
 Deck deck2;
@@ -11,6 +12,7 @@ void setup() {
     heartsSprite = loadImage("Suites/SuiteHeart.png");
     clubsSprite = loadImage("Suites/SuiteClub.png");
     diamondsSprite = loadImage("Suites/SuiteDiamond.png");
+    cardBackSprite = loadImage("CardBack.png");
     size(800, 600);
     deck1 = new Deck(10, 10);
     deck2 = new Deck(200, 200);
