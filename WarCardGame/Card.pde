@@ -16,7 +16,7 @@ class Card {
     PVector position;
     int cardNumber;
     int textSize = TEXT_SIZE;
-    boolean isFaceDown = true;
+    boolean isFaceDown = false;
     PImage spriteSuite;
     
     Card(String suite, int number, Deck deckFrom) { //Removed deck as cards can be made within main deck
@@ -68,13 +68,18 @@ class Card {
     void displayCard() {
         pushMatrix();
         translate(position.x + cardNumber/5, position.y + cardNumber/5);
-        fill(255);
-        rect(0, 0, CARD_WIDTH, CARD_HEIGHT, CORNER_RADIUS);
-        drawSuite();
-        textAlign(CENTER);
-        textSize(textSize);
-        fill(0);
-        text(value, CARD_WIDTH/2, CARD_HEIGHT/2 + textSize);
+        if(isFaceDown){
+            fill(0, 0, 255);
+            rect(0, 0, CARD_WIDTH, CARD_HEIGHT, CORNER_RADIUS);
+        }else{
+            fill(255);
+            rect(0, 0, CARD_WIDTH, CARD_HEIGHT, CORNER_RADIUS);
+            drawSuite();
+            textAlign(CENTER);
+            textSize(textSize);
+            fill(0);
+            text(value, CARD_WIDTH/2, CARD_HEIGHT/2 + textSize);
+        }
         popMatrix();
     }
 }
