@@ -1,19 +1,32 @@
 class Deck {
-    Card[] deck;
+    //Cards at the front of the array are at the bottom of the deck.
+    //Cards at the back of the array are on the top of the deck.
+    Card[] deck = new Card[0];
+    PVector position;
 
     //Default deck.
-    Deck() {
-        deck = new Card[52];
+    Deck(float xPos, float yPos) {
+        this.position = new PVector(xPos, yPos);
         addDefaultCards();
     }
 
     void addDefaultCards() {
         String[] suiteArray = {SPADES, CLUBS, HEARTS, DIAMONDS};
-        for(int suiteI = 0; suiteI<4; suiteI++){
-            for(int cardVal = 0; cardVal<13; cardVal++){
-                deck[suiteI*13 + cardVal] = new Card(suiteArray[suiteI], cardVal + 1);
+        for (int i = 0; i < 4; i++) {
+            for (int cardVal = 1; cardVal <= 13; cardVal++) {
+                addCardOnTop(new Card(suiteArray[i], cardVal, this));
             }
         }
+    }
+
+    void addCardOnTop(Card card) {
+        card.cardNumber = deck.length;
+        deck = (Card[]) splice(deck, card, deck.length);
+    }
+    
+    void addCardOnBottom(Card card) {
+        card.cardNumber = 0;
+        deck = (Card[]) splice(deck, card, 0);
     }
 
     void shuffleDeck() {
@@ -27,10 +40,20 @@ class Deck {
             int index = indicesRemaining.get(rindex); //Gets the index from list. Done this way to be able to remove index later
             indicesRemaining.remove(rindex);
             temp[index] = deck[i]; //Copies over card to random index
+            deck[i].cardNumber = index;
         }
         deck = temp;
-        for(int i = 0; i<deck.length; i++){
-            println(deck[i].suite + ":" + deck[i].value);
+    }
+
+    void printDeck() {
+        for (int i = 0; i < deck.length; i++) {
+            deck[i].printCard();
+        }
+    }
+    
+    void displayDeck(){
+        for(int i = 0; i < deck.length; i++){
+            deck[i].displayCard();
         }
     }
 }
